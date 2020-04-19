@@ -1,11 +1,11 @@
-#exfat-synology auto mount
+# exfat-synology auto mount
 
 > Perfect shell scripts to automatic mount/unmount exfat disk partition on Synology DiskStation NAS (x86 platform).
 > Currently support only one exfat partition, and don't try to write data into the exfat partition! Which will have unexpected problems.
 
 **Tested on VitualBox + Jun's Mod V1.02-alpha + DS3615xs + DSM 6.1-15047 Update 1, use this at your own risks.**
 
-##How-To Guide
+## How-To Guide
 
 **Initialize Setup**
 
@@ -87,7 +87,7 @@ mv /tmp/synocheckshare.sh /usr/syno/bin/synocheckshare
 
 2. Automatically Rename Photos & Videos, visit: [exifname](https://github.com/luckylz2git/exfat-synology/tree/master/exifname).
 
-##Upgrade
+## Upgrade
 
 SSH or Telnet:
 ```
@@ -96,7 +96,7 @@ chmod 755 /tmp/upgrade.sh
 /tmp/upgrade.sh
 ```
 
-##Uninstall
+## Uninstall
 
 SSH or Telnet:
 ```
