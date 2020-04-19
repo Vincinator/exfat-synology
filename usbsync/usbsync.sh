@@ -194,13 +194,15 @@ SourceDirPhoto=$(cat "$Settings" | grep 'SourceDirPhoto')
 if [ -n "$SourceDirPhoto" ]; then
 	SrcDir=$MountPoint/${SourceDirPhoto#*:}
 else
-	SrcDir=$MountPoint/
+	echo "Source Photo Dir is not set" >> $RsyncLog
+	exit 0
 fi
 ImportDirPhoto=$(cat "$Settings" | grep 'ImportDirPhoto')
 if [ -n "$ImportDirPhoto" ]; then
 	DestDir=${ImportDirPhoto#*:}
 else
-	DestDir=$DefaultDir
+	echo "Import Photo Dir is not set" >> $RsyncLog
+	exit 0
 fi
 if [ ! -d "$DestDir" ]; then
 	mkdir -p "$DestDir"
@@ -215,9 +217,9 @@ rm -f $AllFiles
 SourceDirVideo=$(cat "$Settings" | grep 'SourceDirVideo')
 if [ -n "$SourceDirVideo" ]; then
 	SrcDir=$MountPoint/${SourceDirVideo#*:}
-else
-	echo "Import Photo Dir is not set" >> $RsyncLog
-	return 0
+els
+	echo "Source Photo Dir is not set" >> $RsyncLog
+	exit 0
 fi
 
 ImportDirVideo=$(cat "$Settings" | grep 'ImportDirVideo')
@@ -225,7 +227,7 @@ if [ -n "$ImportDirVideo" ]; then
 	DestDir=${ImportDirVideo#*:}
 else 
 	echo "Import Video Dir is not set" >> $RsyncLog
-	return 0
+	exit 0
 fi
 if [ ! -d "$DestDir" ]; then
 	mkdir -p "$DestDir"
